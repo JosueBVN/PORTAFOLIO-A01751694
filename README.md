@@ -1,44 +1,36 @@
-# WoutFrameworkA01751694
-# Implementación de Regresión Logística desde Cero
+# Implementación de Red Neuronal para Regresión
 
-Este proyecto consiste en una implementación manual del algoritmo de Regresión Logística en Python, sin utilizar bibliotecas o frameworks de aprendizaje automático. El objetivo es comprender en profundidad el funcionamiento de la Regresión Logística y cómo se pueden ajustar los parámetros del modelo utilizando el descenso de gradiente.
-
-## Contenido
-
-- [Requisitos](#requisitos)
-- [Uso](#uso)
-- [Detalles de la Implementación](#detalles-de-la-implementación)
-  - [Requisitos](#requisitos-1)
-  - [Clase LogisticRegression](#clase-logisticregression)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
+Este proyecto implementa una red neuronal simple para resolver un problema de regresión utilizando solo NumPy. El objetivo es predecir el valor de una variable objetivo (en este caso, "medv") basándose en un conjunto de características.
 
 ## Requisitos
 
-- Python (3.6 o superior)
+Asegúrate de tener instalada la librería NumPy. Puedes instalarla usando el siguiente comando:
+
+```bash
+pip install numpy
+```
+## Dataset
+El dataset utilizado se divide en dos archivos CSV: train.csv y test.csv. El archivo train.csv contiene los datos de entrenamiento y el archivo test.csv contiene los datos de prueba.
 
 ## Uso
+El código principal se encuentra en el archivo main.py. A continuación se describen los pasos clave del proceso de implementación:
 
-1. Clona este repositorio en tu máquina local.
-2. Ejecuta el archivo `logistic_regression.py`.
+## Carga de Datos
+Los datos de entrenamiento y prueba se cargan desde los archivos CSV utilizando la función load_csv_data.
 
-## Detalles de la Implementación
+Normalización de Características: Las características se normalizan restando la media y dividiendo por la desviación estándar de los datos de entrenamiento.
 
-La implementación de la Regresión Logística se encuentra en el archivo `logistic_regression.py`. Aquí, se ha creado una clase `LogisticRegression` que contiene métodos para ajustar el modelo y hacer predicciones.
+## Arquitectura de la Red Neuronal
+ La red neuronal tiene dos capas ocultas. Puedes ajustar el tamaño de las capas y otros hiperparámetros en el código.
 
-### Clase `LogisticRegression`
+## Entrenamiento
+Se realizan múltiples épocas de entrenamiento. El algoritmo utiliza el algoritmo de optimización Adam con momentos y adaptación de la tasa de aprendizaje.
 
-- `sigmoid(z)`: Calcula la función sigmoide.
-- `fit(X, y)`: Ajusta el modelo de Regresión Logística a los datos de entrenamiento `X` e `y`.
-- `predict(X)`: Realiza predicciones binarias sobre los datos de entrada `X`.
+## Predicciones y Evaluación
+Se calculan las predicciones en el conjunto de prueba y se evalúan utilizando el coeficiente de determinación (R^2 Score).
 
-La implementación se basa en el descenso de gradiente, donde los parámetros del modelo (weights y bias) se actualizan iterativamente para minimizar la función de costo. Se utiliza la función sigmoide para transformar las salidas del modelo en valores entre 0 y 1, que se interpretan como probabilidades.
-
-## Uso
-
-En el archivo `logistic_regression.py`, puedes ajustar los datos de entrenamiento `X_train` e `y_train` para tus propios datos. Luego, ejecuta el archivo utilizando `python logistic_regression.py`. Las predicciones resultantes se mostrarán en la consola.
-
-Recuerda que esta implementación es básica y no aborda características avanzadas ni consideraciones de optimización. Para aplicaciones reales, se recomienda utilizar bibliotecas como Scikit-Learn, que ofrecen implementaciones robustas y eficientes de algoritmos de aprendizaje automático.
+##Resultados
+A medida que se ajustan los hiperparámetros y se realizan más épocas de entrenamiento, se espera que la pérdida disminuya y que el valor de R^2 Score en el conjunto de prueba aumente. Puede ser necesario ajustar la arquitectura de la red, la tasa de aprendizaje y otros hiperparámetros para obtener un mejor rendimiento.
 
 ## Contribuciones
 
