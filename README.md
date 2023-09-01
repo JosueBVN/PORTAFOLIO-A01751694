@@ -8,6 +8,8 @@ Asegúrate de tener instalada la librería NumPy. Puedes instalarla usando el si
 
 ```bash
 pip install numpy
+pip install scikit-learn
+
 ```
 ## Dataset
 El dataset utilizado se divide en dos archivos CSV: train.csv y test.csv. El archivo train.csv contiene los datos de entrenamiento y el archivo test.csv contiene los datos de prueba.
