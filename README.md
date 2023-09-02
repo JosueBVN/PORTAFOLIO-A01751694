@@ -9,6 +9,8 @@ Asegúrate de tener instalada la librería NumPy. Puedes instalarla usando el si
 ```bash
 pip install numpy
 pip install scikit-learn
+pip install matplotlib
+pip install seaborn
 
 ```
 ## Dataset

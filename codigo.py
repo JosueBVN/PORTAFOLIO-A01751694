@@ -10,6 +10,8 @@ import numpy as np
 import csv
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score, f1_score, confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Función de activación ReLU
 def relu(x):
@@ -137,14 +139,25 @@ Z2_test = np.dot(W2, A1_test) + b2
 predictions_test = Z2_test
 
 r2_score = r_squared(y_test, predictions_test.flatten())
-precision = precision_score(y_test > 0.5, predictions_test.flatten() > 0.5)
-recall = recall_score(y_test > 0.5, predictions_test.flatten() > 0.5)
-f1 = f1_score(y_test > 0.5, predictions_test.flatten() > 0.5)
-confusion = confusion_matrix(y_test > 0.5, predictions_test.flatten() > 0.5)
+
+# Binarizar las etiquetas para calcular las métricas
+y_test_binary = (y_test > 0.5).astype(int)
+predictions_test_binary = (predictions_test.flatten() > 0.5).astype(int)
+
+precision = precision_score(y_test_binary, predictions_test_binary)
+recall = recall_score(y_test_binary, predictions_test_binary)
+f1 = f1_score(y_test_binary, predictions_test_binary)
+confusion = confusion_matrix(y_test_binary, predictions_test_binary)
 
 print(f"R^2 Score on Test Data: {r2_score:.4f}")
 print(f"Precision: {precision:.4f}")
 print(f"Recall: {recall:.4f}")
 print(f"F1-Score: {f1:.4f}")
-print("Confusion Matrix:")
-print(confusion)
+
+# Visualización de la matriz de confusión
+plt.figure(figsize=(8, 6))
+sns.heatmap(confusion, annot=True, fmt="d", cmap="Blues", cbar=False)
+plt.xlabel("Predicted Label")
+plt.ylabel("Actual Label")
+plt.title("Confusion Matrix")
+plt.show()
